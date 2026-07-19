@@ -1,0 +1,85 @@
+/* Background */
+
+body {
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+    background: linear-gradient(135deg, #d4fc79 0%, #96e6a1 100%);
+}
+
+/* Main Container */
+
+.landing-container {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* White Card */
+
+.landing-card {
+    width: 900px;
+    background: rgba(255,255,255,0.95);
+    padding: 40px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+}
+
+/* Heading */
+
+.landing-card h1{
+    color:#2E7D32;
+    font-size:42px;
+    margin-bottom:10px;
+}
+
+.landing-card p{
+    color:#555;
+    font-size:18px;
+    margin-bottom:40px;
+}
+
+/* Portal Container */
+
+.portal-container{
+    display:flex;
+    justify-content:center;
+    gap:40px;
+    flex-wrap:wrap;
+}
+
+/* Portal Card */
+
+.portal-card{
+    width:180px;
+    height:180px;
+    background:white;
+    border-radius:18px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    cursor:pointer;
+    transition:0.3s;
+    border:2px solid #e8e8e8;
+}
+
+.portal-card:hover{
+    transform:translateY(-10px);
+    box-shadow:0 15px 25px rgba(0,0,0,0.18);
+    border-color:#2E7D32;
+}
+
+/* Icons */
+
+.portal-card h2{
+    font-size:50px;
+    margin:0;
+}
+
+.portal-card h3{
+    margin-top:15px;
+    color:#333;
+    font-size:24px;
+}
