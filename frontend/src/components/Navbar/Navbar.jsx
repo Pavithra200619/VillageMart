@@ -33,13 +33,17 @@ function Navbar({
   return (
     <nav
       style={{
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "space-between",
-        padding: "15px 40px",
-        background: "#2e7d32",
-        color: "white",
-      }}
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "space-between",
+  padding: "15px 40px",
+  background: "#1B5E20",
+  color: "white",
+  position: "sticky",
+  top: 0,
+  zIndex: 1000,
+  boxShadow: "0 4px 12px rgba(0,0,0,0.12)",
+}}
     >
       {/* Logo */}
       <h2

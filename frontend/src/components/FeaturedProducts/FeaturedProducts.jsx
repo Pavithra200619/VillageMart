@@ -55,8 +55,10 @@ function FeaturedProducts({ search = "" }) {
                 style={{
                   background: "white",
                   padding: "20px",
-                  borderRadius: "15px",
-                  boxShadow: "0 0 10px rgba(0,0,0,.1)",
+                  borderRadius: "18px",
+                  boxShadow: "0 8px 20px rgba(0,0,0,.08)",
+                  transition: "0.3s",
+                  overflow: "hidden",
                 }}
               >
                 <img
@@ -64,7 +66,7 @@ function FeaturedProducts({ search = "" }) {
                   alt={product.name}
                   style={{
                     width: "100%",
-                    height: "180px",
+                    height: "220px",
                     objectFit: "cover",
                     borderRadius: "10px",
                   }}
@@ -82,7 +84,7 @@ function FeaturedProducts({ search = "" }) {
                     style={{
                       width: "100%",
                       padding: "12px",
-                      background: "#2e7d32",
+                      background: "#1B5E20",
                       color: "white",
                       border: "none",
                       borderRadius: "10px",

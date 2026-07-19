@@ -5,7 +5,7 @@ import axios from "axios";
 
 function Checkout() {
   const navigate = useNavigate();
-  const { cartItems } = useCart();
+  const { cartItems, clearCart } = useCart();
   const [paymentMethod, setPaymentMethod] = useState("online");
 
   const address = JSON.parse(localStorage.getItem("deliveryAddress"));
@@ -66,7 +66,7 @@ function Checkout() {
       orderData
     );
 
-    localStorage.removeItem("cart");
+    clearCart();
 
     alert("Order Placed Successfully!");
 
@@ -137,7 +137,7 @@ function Checkout() {
         orderData
       );
 
-      localStorage.removeItem("cart");
+      clearCart();
 
 
       alert("Order Placed Successfully!");
