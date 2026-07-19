@@ -22,7 +22,7 @@ function SellerLogin() {
 
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/seller/login",
+        "https://villagemart-tu66.onrender.com/api/seller/login",
         formData
       );
 

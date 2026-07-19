@@ -21,7 +21,7 @@ function Checkout() {
   const handleOnlinePayment = async () => {
   try {
     const { data } = await axios.post(
-      "http://localhost:5000/api/payment/create-order",
+      "https://villagemart-tu66.onrender.com/api/payment/create-order",
       {
         amount: total,
       }
@@ -62,7 +62,7 @@ function Checkout() {
     console.log(orderData);
 
     await axios.post(
-      "http://localhost:5000/api/orders",
+      "https://villagemart-tu66.onrender.com/api/orders",
       orderData
     );
 
@@ -133,7 +133,7 @@ function Checkout() {
       console.log(orderData);
 
       await axios.post(
-        "http://localhost:5000/api/orders",
+        "https://villagemart-tu66.onrender.com/api/orders",
         orderData
       );
 

@@ -27,7 +27,7 @@ function TrackOrder() {
   const fetchOrder = async () => {
     try {
       const res = await axios.get(
-        `http://localhost:5000/api/orders/${selectedOrder.id}`
+        `https://villagemart-tu66.onrender.com/api/orders/${selectedOrder.id}`
       );
 
       setOrder(res.data);

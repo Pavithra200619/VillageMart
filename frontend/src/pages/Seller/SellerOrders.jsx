@@ -17,7 +17,7 @@ function SellerOrders() {
       if (!seller) return;
 
       const res = await axios.get(
-        `http://localhost:5000/api/orders/seller/${seller.id}`
+        `https://villagemart-tu66.onrender.com/api/orders/seller/${seller.id}`
       );
 
       setOrders(res.data);
@@ -29,7 +29,7 @@ function SellerOrders() {
   const updateStatus = async (orderId, status) => {
     try {
       await axios.put(
-        `http://localhost:5000/api/orders/${orderId}`,
+        `https://villagemart-tu66.onrender.com/api/orders/${orderId}`,
         {
           status,
         }

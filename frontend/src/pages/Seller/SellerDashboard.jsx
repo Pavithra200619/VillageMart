@@ -19,11 +19,11 @@ function SellerDashboard() {
   const fetchDashboard = async () => {
     try {
       const products = await axios.get(
-        `http://localhost:5000/api/products/seller/${seller.id}`
+        `https://villagemart-tu66.onrender.com/api/products/seller/${seller.id}`
       );
 
       const orders = await axios.get(
-        `http://localhost:5000/api/orders/seller/${seller.id}`
+        `https://villagemart-tu66.onrender.com/api/orders/seller/${seller.id}`
       );
 
       const revenue = orders.data.reduce(

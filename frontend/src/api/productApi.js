@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API = "http://localhost:5000/api/products";
+const API = "https://villagemart-tu66.onrender.com/api/products";
 
 export const getProducts = async () => {
     const response = await axios.get(API);

@@ -21,7 +21,7 @@ function MyOrders() {
       }
 
       const res = await axios.get(
-        `http://localhost:5000/api/orders/customer/${user.id}`
+        `https://villagemart-tu66.onrender.com/api/orders/customer/${user.id}`
       );
 
       setOrders(res.data);

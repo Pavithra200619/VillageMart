@@ -25,7 +25,7 @@ function AddProduct() {
     e.preventDefault();
 
     try {
-      await axios.post("http://localhost:5000/api/products", {
+      await axios.post("https://villagemart-tu66.onrender.com/api/products", {
         ...formData,
         seller_id: seller.id
       });

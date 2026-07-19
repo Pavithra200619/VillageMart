@@ -21,7 +21,7 @@ function CategoryProducts() {
       setLoading(true);
 
       const response = await axios.get(
-        `http://localhost:5000/api/products/category/${category}`
+        `https://villagemart-tu66.onrender.com/api/products/category/${category}`
       );
 
       setProducts(response.data);

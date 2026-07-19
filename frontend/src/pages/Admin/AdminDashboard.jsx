@@ -18,7 +18,7 @@ function AdminDashboard() {
   const fetchDashboard = async () => {
     try {
       const res = await axios.get(
-        "http://localhost:5000/api/admin/dashboard"
+        "https://villagemart-tu66.onrender.com/api/admin/dashboard"
       );
       setStats(res.data);
     } catch (err) {
@@ -29,7 +29,7 @@ function AdminDashboard() {
   const fetchPendingSellers = async () => {
     try {
       const res = await axios.get(
-        "http://localhost:5000/api/admin/pending-sellers"
+        "https://villagemart-tu66.onrender.com/api/admin/pending-sellers"
       );
       setPendingSellers(res.data);
     } catch (err) {
@@ -45,7 +45,7 @@ function AdminDashboard() {
   const fetchCustomers = async () => {
   try {
     const res = await axios.get(
-      "http://localhost:5000/api/admin/customers"
+      "https://villagemart-tu66.onrender.com/api/admin/customers"
     );
 
     setCustomers(res.data);
@@ -58,7 +58,7 @@ function AdminDashboard() {
   const approveSeller = async (id) => {
     try {
       await axios.put(
-        `http://localhost:5000/api/admin/approve/${id}`
+        `https://villagemart-tu66.onrender.com/api/admin/approve/${id}`
       );
 
       alert("Seller Approved Successfully");
@@ -74,7 +74,7 @@ function AdminDashboard() {
   const rejectSeller = async (id) => {
     try {
       await axios.put(
-        `http://localhost:5000/api/admin/reject/${id}`
+        `https://villagemart-tu66.onrender.com/api/admin/reject/${id}`
       );
 
       alert("Seller Rejected Successfully");
