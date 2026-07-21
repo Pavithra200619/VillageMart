@@ -37,6 +37,8 @@ function Navbar({
   alignItems: "center",
   justifyContent: "space-between",
   padding: "15px 40px",
+  flexWrap: "wrap",
+  gap: "15px",
   background: "#1B5E20",
   color: "white",
   position: "sticky",
@@ -47,7 +49,10 @@ function Navbar({
     >
       {/* Logo */}
       <h2
-        style={{ cursor: "pointer" }}
+        style={{ cursor: "pointer",
+                 fontsize: "24px",
+                 whiteSpace: "nowrap",
+         }}
         onClick={() => navigate("/home")}
       >
         🌿 VillageMart
@@ -57,7 +62,8 @@ function Navbar({
       <div
         style={{
           position: "relative",
-          width: "420px",
+          width: "100%",
+          maxwidth: "420px",
         }}
       >
         <input
@@ -139,6 +145,8 @@ function Navbar({
           display: "flex",
           alignItems: "center",
           gap: "20px",
+          flexWrap: "wrap",
+          justifyContent: "center",
         }}
       >
         <button
@@ -187,9 +195,16 @@ function Navbar({
           }}
         >
           <FaUserCircle size={22} />
-          <span>
-            Hi, {user?.name || "Guest"}
-          </span>
+          <span
+style={{
+  maxWidth: "90px",
+  overflow: "hidden",
+  textOverflow: "ellipsis",
+  whiteSpace: "nowrap",
+}}
+>
+Hi, {user?.name || "Guest"}
+</span>
         </div>
 
         <button
