@@ -22,6 +22,7 @@ import Address from "./pages/Address/Address";
 import MyOrders from "./pages/Orders/MyOrders";
 import TrackOrder from "./pages/Orders/TrackOrder";
 import SellerOrders from "./pages/Seller/SellerOrders";
+import Subscription from "./pages/Subscription/Subscription";
 
 
 function App() {
@@ -51,6 +52,7 @@ function App() {
       <Route path="/my-orders" element={<MyOrders />} />
       <Route path="/track-order" element={<TrackOrder />} />
       <Route path="/seller/orders" element={<SellerOrders />} />
+      <Route path="/subscription" element={<Subscription />} />
 
 
     </Routes>

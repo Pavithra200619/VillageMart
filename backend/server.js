@@ -8,6 +8,7 @@ const cartRoutes = require("./routes/cartRoutes");
 const orderRoutes = require("./routes/orderRoutes");
 const addressRoutes = require("./routes/addressRoutes");
 const paymentRoutes = require("./routes/paymentRoutes");
+const subscriptionRoutes = require("./routes/subscriptionRoutes");
 require("dotenv").config();
 console.log("PORT =", process.env.PORT);
 console.log("DB_USER =", process.env.DB_USER);
@@ -22,6 +23,7 @@ app.use(express.json());
 console. log("Product routes registered");
 app.use("/api/products", productRoutes);
 console. log("product routes mounted");
+app.use("/api/subscriptions", subscriptionRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api/seller", sellerRoutes);
 app.use("/api/admin", adminRoutes);
@@ -31,6 +33,7 @@ app.use("/api/orders", orderRoutes);
 console.log("Orders route registered");
 app.use("/api/payment", paymentRoutes);
 app.use("/api/address", addressRoutes);
+
 console.log("Address route registered");
 
 app.get("/", (req, res) => {

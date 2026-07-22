@@ -32,40 +32,36 @@ exports.placeOrder = async (req, res) => {
     const orderId = order.rows[0].id;
 
     for (const item of items) {
-
-  await pool.query(
-    `INSERT INTO order_items
-    (
-      order_id,
-      product_id,
-      seller_id,
-      product_name,
-      quantity,
-      price,
-      subtotal
-    )
-    VALUES
-    ($1,$2,$3,$4,$5,$6,$7)`,
-
-    [
-      orderId,
-      item.product_id,
-      item.seller_id,
-      item.product_name,
-      item.quantity,
-     Number(item.price),
-      item.quantity * Number(item.price),
-    ]
-  );
-
-}
+      await pool.query(
+        `INSERT INTO order_items
+        (
+          order_id,
+          product_id,
+          seller_id,
+          product_name,
+          quantity,
+          price,
+          subtotal
+        )
+        VALUES
+        ($1,$2,$3,$4,$5,$6,$7)`,
+        [
+          orderId,
+          item.product_id,
+          item.seller_id,
+          item.product_name,
+          item.quantity,
+          Number(item.price),
+          item.quantity * Number(item.price),
+        ]
+      );
+    }
 
     res.status(201).json({
       success: true,
       message: "Order Placed Successfully",
       order: order.rows[0],
     });
-
   } catch (err) {
     console.log(err);
 
@@ -86,13 +82,12 @@ exports.getCustomerOrders = async (req, res) => {
     const result = await pool.query(
       `SELECT *
        FROM orders
-       WHERE customer_id=$1
+       WHERE customer_id = $1
        ORDER BY created_at DESC`,
       [customerId]
     );
 
     res.json(result.rows);
-
   } catch (err) {
     console.log(err);
 
@@ -110,15 +105,39 @@ exports.getSellerOrders = async (req, res) => {
     const { sellerId } = req.params;
 
     const result = await pool.query(
-      `SELECT *
-       FROM orders
-       WHERE seller_id=$1
-       ORDER BY created_at DESC`,
+      `SELECT
+          o.id,
+          o.customer_id,
+          o.total_amount,
+          o.payment_method,
+          o.payment_status,
+          o.order_status,
+          o.address,
+          o.created_at,
+
+          u.name AS customer_name,
+          u.email AS customer_email,
+
+          oi.product_name,
+          oi.quantity,
+          oi.price,
+          oi.subtotal
+
+      FROM orders o
+
+      JOIN users u
+      ON o.customer_id = u.id
+
+      JOIN order_items oi
+      ON o.id = oi.order_id
+
+      WHERE o.seller_id = $1
+
+      ORDER BY o.created_at DESC`,
       [sellerId]
     );
 
     res.json(result.rows);
-
   } catch (err) {
     console.log(err);
 
@@ -133,7 +152,6 @@ exports.getSellerOrders = async (req, res) => {
 // ==============================
 exports.getAllOrders = async (req, res) => {
   try {
-
     const result = await pool.query(
       `SELECT *
        FROM orders
@@ -141,7 +159,6 @@ exports.getAllOrders = async (req, res) => {
     );
 
     res.json(result.rows);
-
   } catch (err) {
     console.log(err);
 
@@ -156,14 +173,13 @@ exports.getAllOrders = async (req, res) => {
 // ==============================
 exports.updateOrderStatus = async (req, res) => {
   try {
-
     const { orderId } = req.params;
     const { status } = req.body;
 
     const result = await pool.query(
       `UPDATE orders
-       SET status=$1
-       WHERE id=$2
+       SET status = $1
+       WHERE id = $2
        RETURNING *`,
       [status, orderId]
     );
@@ -179,7 +195,6 @@ exports.updateOrderStatus = async (req, res) => {
       message: "Order Status Updated",
       order: result.rows[0],
     });
-
   } catch (err) {
     console.log(err);
 
@@ -188,6 +203,10 @@ exports.updateOrderStatus = async (req, res) => {
     });
   }
 };
+
+// ==============================
+// Get Order By ID
+// ==============================
 exports.getOrderById = async (req, res) => {
   try {
     const { id } = req.params;
@@ -206,6 +225,7 @@ exports.getOrderById = async (req, res) => {
     res.json(result.rows[0]);
   } catch (error) {
     console.log(error);
+
     res.status(500).json({
       message: "Server Error",
     });

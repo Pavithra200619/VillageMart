@@ -31,26 +31,26 @@ function Navbar({
     .slice(0, 6);
 
   return (
-    <nav
-      style={{
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "space-between",
-  padding: "15px 40px",
-  flexWrap: "wrap",
-  gap: "15px",
-  background: "#1B5E20",
-  color: "white",
-  position: "sticky",
-  top: 0,
-  zIndex: 1000,
-  boxShadow: "0 4px 12px rgba(0,0,0,0.12)",
-}}
-    >
+   <nav
+  style={{
+    display: "flex",
+    flexDirection: window.innerWidth <= 768 ? "column" : "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    padding: window.innerWidth <= 768 ? "12px" : "15px 40px",
+    gap: "15px",
+    background: "#1B5E20",
+    color: "white",
+    position: "sticky",
+    top: 0,
+    zIndex: 1000,
+    boxShadow: "0 4px 12px rgba(0,0,0,0.12)",
+  }}
+>
       {/* Logo */}
       <h2
         style={{ cursor: "pointer",
-                 fontsize: "24px",
+                 fontSize: "24px",
                  whiteSpace: "nowrap",
          }}
         onClick={() => navigate("/home")}
@@ -63,7 +63,7 @@ function Navbar({
         style={{
           position: "relative",
           width: "100%",
-          maxwidth: "420px",
+          maxWidth: window.innerWidth<=768 ? "100%" : "420px",
         }}
       >
         <input
@@ -144,7 +144,7 @@ function Navbar({
         style={{
           display: "flex",
           alignItems: "center",
-          gap: "20px",
+          gap: window.innerWidth <= 768 ? "12px" : "20px",
           flexWrap: "wrap",
           justifyContent: "center",
         }}
@@ -154,7 +154,8 @@ function Navbar({
             navigate("/my-orders")
           }
           style={{
-            padding: "8px 15px",
+            padding:window.innerWidth <= 768 ? "6px 10px":"8px 15px",
+            fontSize:window.innerWidth <= 768 ? "14px":"16px",
             borderRadius: "8px",
             border: "none",
             cursor: "pointer",
@@ -210,11 +211,12 @@ Hi, {user?.name || "Guest"}
         <button
           onClick={handleLogout}
           style={{
-            padding: "8px 14px",
-            border: "none",
-            borderRadius: "8px",
-            cursor: "pointer",
-          }}
+  padding: window.innerWidth <= 768 ? "6px 10px" : "8px 14px",
+  fontSize: window.innerWidth <= 768 ? "14px" : "16px",
+  border: "none",
+  borderRadius: "8px",
+  cursor: "pointer",
+}}
         >
           Logout
         </button>

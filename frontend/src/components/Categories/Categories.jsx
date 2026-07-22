@@ -1,4 +1,6 @@
 import { useNavigate } from "react-router-dom";
+import { FaGlassMartiniAlt } from "react-icons/fa";
+import { MdSubscriptions } from "react-icons/md";
 
 import {
   FaCarrot,
@@ -23,26 +25,33 @@ function Categories() {
   { name: "Bakery", icon: <FaBreadSlice size={38} color="#D2691E" /> },
   { name: "Panipuri", icon: <FaHamburger size={38} color="#FFB300" /> },
   { name: "Beverages", icon: <FaWineBottle size={38} color="#7E57C2" /> },
+  { name: "Juice", icon: <FaGlassMartiniAlt size={38} color="#FF7043" /> },
+  { name: "Subscriptions", icon: <MdSubscriptions size={38} color="#1976D2" /> },
+
 ];
 
   return (
-    <section style={{ padding: "40px" }}>
+    <section style={{ padding:window.innerWidth<=768? "15px": "40px" }}>
       <h2 style={{ marginBottom: "20px" }}>Shop by Category</h2>
 
       <div
         style={{
           display: "grid",
-          gridTemplateColumns: "repeat(4,1fr)",
+          gridTemplateColumns: window.innerWidth <= 768? "repeat(2,1fr)": "repeat(4,1fr)",
           gap: "20px",
         }}
       >
         {categories.map((item, index) => (
           <div
             key={index}
-            onClick={() => navigate(`/category/${item.name}`)}
+            onClick={() =>
+  item.name === "Subscriptions"
+    ? navigate("/subscription")
+    : navigate(`/category/${item.name}`)
+}
             style={{
               background: "#ffffff",
-              padding: "30px",
+              padding: window.innerWidth <= 768? "18px": "30px",
               borderRadius: "12px",
               boxShadow: "0 2px 10px rgba(0,0,0,0.1)",
               textAlign: "center",
@@ -52,7 +61,12 @@ function Categories() {
             <>
   <div>{item.icon}</div>
 
-  <h3 style={{ marginTop: "15px" }}>
+  <h3
+  style={{
+    marginTop: "15px",
+    fontSize: window.innerWidth <= 768 ? "16px" : "20px",
+  }}
+>
     {item.name}
   </h3>
 </>
