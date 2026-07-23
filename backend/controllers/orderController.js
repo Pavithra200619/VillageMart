@@ -231,3 +231,52 @@ exports.getOrderById = async (req, res) => {
     });
   }
 };
+const pool = require("../config/db");
+
+const getAllOrdersForAdmin = async (req, res) => {
+  try {
+    const result = await pool.query(`
+      SELECT
+        o.id,
+        o.total_amount,
+        o.payment_method,
+        o.payment_status,
+        o.order_status,
+        o.created_at,
+
+        u.name AS customer_name,
+        u.email AS customer_email,
+        u.phone,
+
+        s.shop_name,
+        s.name AS seller_name,
+
+        p.name AS product_name,
+        oi.quantity
+
+      FROM orders o
+
+      JOIN users u
+      ON o.customer_id = u.id
+
+      JOIN sellers s
+      ON o.seller_id = s.id
+
+      JOIN order_items oi
+      ON oi.order_id = o.id
+
+      JOIN products p
+      ON p.id = oi.product_id
+
+      ORDER BY o.created_at DESC;
+    `);
+
+    res.json(result.rows);
+
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ message: "Server Error" });
+  }
+};
+
+module.exports.getAllOrdersForAdmin = getAllOrdersForAdmin;
