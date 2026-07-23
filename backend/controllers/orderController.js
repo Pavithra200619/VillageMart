@@ -249,7 +249,7 @@ exports.getAllOrdersForAdmin = async (req, res) => {
         u.phone,
 
         s.shop_name,
-        s.name AS seller_name,
+        s.owner_name AS seller_name,
 
         p.name AS product_name,
         oi.quantity
