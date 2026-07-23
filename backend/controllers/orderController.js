@@ -231,9 +231,9 @@ exports.getOrderById = async (req, res) => {
     });
   }
 };
-const pool = require("../config/db");
 
-const getAllOrdersForAdmin = async (req, res) => {
+
+exports.getAllOrdersForAdmin = async (req, res) => {
   try {
     const result = await pool.query(`
       SELECT
@@ -257,16 +257,16 @@ const getAllOrdersForAdmin = async (req, res) => {
       FROM orders o
 
       JOIN users u
-      ON o.customer_id = u.id
+        ON o.customer_id = u.id
 
       JOIN sellers s
-      ON o.seller_id = s.id
+        ON o.seller_id = s.id
 
       JOIN order_items oi
-      ON oi.order_id = o.id
+        ON oi.order_id = o.id
 
       JOIN products p
-      ON p.id = oi.product_id
+        ON p.id = oi.product_id
 
       ORDER BY o.created_at DESC;
     `);
@@ -275,8 +275,8 @@ const getAllOrdersForAdmin = async (req, res) => {
 
   } catch (err) {
     console.log(err);
-    res.status(500).json({ message: "Server Error" });
+    res.status(500).json({
+      message: "Server Error"
+    });
   }
 };
-
-module.exports.getAllOrdersForAdmin = getAllOrdersForAdmin;
