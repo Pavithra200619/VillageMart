@@ -11,7 +11,7 @@ const AdminOrders = () => {
   const fetchOrders = async () => {
     try {
       const res = await axios.get(
-        "http://localhost:5000/api/orders/admin/all"
+        "https://villagemart-tu66.onrender.com/api/orders/admin/all"
       );
 
       console.log(res.data);
@@ -26,7 +26,7 @@ const AdminOrders = () => {
     console.log("Clicked ,id,status");
   try {
      await axios.put(
-  `http://localhost:5000/api/orders/${id}`,
+  ` https://villagemart-tu66.onrender.com/api/orders/${id}`,
   {
     status: status,
   }
