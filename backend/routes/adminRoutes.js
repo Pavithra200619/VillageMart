@@ -10,6 +10,7 @@ const {
   getAllCustomers,
   getAllProducts,
   getAllOrders,
+  getAllSellers,
 } = require("../controllers/adminController");
 
 router.post("/login", adminLogin);
@@ -17,6 +18,8 @@ router.post("/login", adminLogin);
 router.get("/dashboard",getDashboardStats);
 
 router.get("/customers", getAllCustomers);
+
+router.get("/sellers", getAllSellers);
 
 router.get("/pending-sellers", getPendingSellers);
 

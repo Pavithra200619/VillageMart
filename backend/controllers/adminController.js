@@ -246,3 +246,30 @@ exports.getAllOrders = async (req, res) => {
     });
   }
 };
+// ===============================
+// Get All Approved Sellers
+// ===============================
+exports.getAllSellers = async (req, res) => {
+  try {
+    const result = await pool.query(`
+      SELECT
+        id,
+        shop_name,
+        owner_name,
+        email,
+        phone,
+        status
+      FROM sellers
+      WHERE status = 'Approved'
+      ORDER BY id;
+    `);
+
+    res.json(result.rows);
+  } catch (err) {
+    console.log(err);
+
+    res.status(500).json({
+      message: "Server Error",
+    });
+  }
+};

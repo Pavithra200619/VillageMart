@@ -23,6 +23,8 @@ import MyOrders from "./pages/Orders/MyOrders";
 import TrackOrder from "./pages/Orders/TrackOrder";
 import SellerOrders from "./pages/Seller/SellerOrders";
 import Subscription from "./pages/Subscription/Subscription";
+import AdminOrders from "./pages/Admin/AdminOrders";
+import AdminSellers from "./pages/Admin/AdminSellers";
 
 
 function App() {
@@ -44,6 +46,7 @@ function App() {
       <Route path="/seller/signup" element={<SellerSignup />} />
       <Route path="/admin/login" element={<AdminLogin />} />
       <Route path="/admin/dashboard" element={<AdminDashboard />} />
+      <Route path="/admin/orders" element={<AdminOrders />} />
       <Route path="/cart" element={<Cart />} />
       <Route path="/category/:category" element={<CategoryProducts />} />
       <Route path="/checkout" element={<Checkout />} />
@@ -53,6 +56,7 @@ function App() {
       <Route path="/track-order" element={<TrackOrder />} />
       <Route path="/seller/orders" element={<SellerOrders />} />
       <Route path="/subscription" element={<Subscription />} />
+      <Route path="/admin/sellers" element={<AdminSellers />} />
 
 
     </Routes>
